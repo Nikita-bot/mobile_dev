@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="283dp"
+        android:layout_marginBottom="54dp"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/bRedText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.413" />
+
+    <Button
+        android:id="@+id/bBlackText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="58dp"
+        android:layout_marginEnd="43dp"
+        android:text="Черный техт"
+        android:textSize="12sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/bRedText"
+        app:layout_constraintEnd_toStartOf="@+id/bRedText"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/bRedText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="61dp"
+        android:text="Красный текст"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/bSize8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bBlackText"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    <Button
+        android:id="@+id/bSize8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        android:text="Размер 8SP"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/bBackgroundWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bSize24"
+        app:layout_constraintTop_toBottomOf="@+id/bRedText" />
+
+    <Button
+        android:id="@+id/bBackgroundYellow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="89dp"
+        android:text="Желтый фон"
+        android:textSize="12sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/bBackgroundWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/bBackgroundWhite"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/bBackgroundWhite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="83dp"
+        android:text="Белый фон"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bBackgroundYellow"
+        app:layout_constraintTop_toBottomOf="@+id/bSize8" />
+
+    <Button
+        android:id="@+id/bSize24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="56dp"
+        android:text="Размер 24SP"
+        android:textSize="12sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/bSize8"
+        app:layout_constraintBottom_toTopOf="@+id/bBackgroundYellow"
+        app:layout_constraintEnd_toStartOf="@+id/bSize8"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
