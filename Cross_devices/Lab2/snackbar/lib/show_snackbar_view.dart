@@ -2,9 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
-class SnackbarView extends StatelessWidget{
+
+class _SnackbarView extends State<SnackbarView>{
 
   final myController =  TextEditingController();
+  bool isExpanded = false;
 
   @override
   void dispose(){
@@ -29,6 +31,11 @@ class SnackbarView extends StatelessWidget{
     logger.v(myController.text);
   }
 
+  void changeExpandedState(){
+    this.isExpanded = this.isExpanded ? false:true;
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,10 +52,34 @@ class SnackbarView extends StatelessWidget{
               controller: myController,
             ),
             ElevatedButton(onPressed: (){printDefaultLog();}, child: const Text("Обычное логирование")),
-            ElevatedButton(onPressed: (){printLoggerLog();}, child: const Text("Логирование Logger"))
+            ElevatedButton(onPressed: (){printLoggerLog();}, child: const Text("Логирование Logger")),
+            Text(
+              "Паздерин Никита Игоревич",
+              style: !isExpanded ? TextStyle(
+                color: Colors.red,
+                fontSize: 14
+              ) :
+                  TextStyle(
+                      color: Colors.green,
+                      fontSize: 25
+                  )
+            ),
+            ElevatedButton(onPressed: (){setState(() {
+              changeExpandedState();
+            });}, child: Text( !isExpanded ?  "Увеличить" : "Уменьшить"))
+            
           ],
         ),
       );
   }
   
+}
+
+class SnackbarView extends StatefulWidget{
+
+  SnackbarView({ Key? key}) : super(key: key);
+
+  @override
+  _SnackbarView createState() => _SnackbarView();
+
 }
