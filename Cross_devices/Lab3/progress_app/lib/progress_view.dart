@@ -56,7 +56,7 @@ class _ProgressViewState extends State<ProgressView> {
     if(check && textController.text!=""){
       text = textController.text;
       process += 0.1;
-      print(process);
+
       if(process>1) process = 0;
     }
 

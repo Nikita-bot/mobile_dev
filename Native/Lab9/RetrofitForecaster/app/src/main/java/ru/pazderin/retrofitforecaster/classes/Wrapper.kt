@@ -1,11 +1,14 @@
 package ru.pazderin.retrofitforecaster.classes
 
+import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 
+
 data class Wrapper (
-    var lot:Double,
-    var lon:Double,
-    var timezone:String,
-    var timezone_offset:Int,
-    var daily:JsonObject
+    var cod     : String?,
+    var message : Int?,
+    var cnt     : Int?,
+    var list    : JsonArray,
+    var city    : JsonObject,
+
 )

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RetrofitForecaster</string>
+    <string name="API_TOKEN">f4ecb913d35a18fee6ce37d714c9f85f</string>
 </resources>
