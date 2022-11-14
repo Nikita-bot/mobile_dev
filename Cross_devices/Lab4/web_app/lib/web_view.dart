@@ -12,7 +12,6 @@ class WebView extends StatelessWidget {
      logger.Logger log = logger.Logger();
      final response = await http.get(Uri.parse("http://jsonplaceholder.typicode.com/users"));
      if(response.statusCode == 200){
-
        log.v(response.body);
      }
      else{
