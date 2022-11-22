@@ -16,48 +16,71 @@ class PhoneBookView extends StatefulWidget {
 }
 
 class _PhoneBookViewState extends State<PhoneBookView> {
+
+  late List<Contact> contacts;
+  late List<Contact> filteredContacts;
+  late List<Contact> suggestions;
+  TextEditingController controller = TextEditingController();
+  @override
+  void initState() {
+    getContact();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title:const Text("Контакты"),
       ),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        child: FutureBuilder<List<Contact>>(
-          future: getContact(),
-          builder: (BuildContext context, AsyncSnapshot<List<Contact>> snapshot){
-            switch (snapshot.connectionState) {
-              case ConnectionState.waiting: return CircularProgressIndicator();
-              default:
-                if (snapshot.hasError)
-                  return Text('Error: ${snapshot.error}');
-                else {
-                  if(snapshot.data == null) return CircularProgressIndicator();
-                  else {
-                    print(snapshot.data?.length);
-
-                    return ListView.builder(
-                        itemCount: 4,
+      body: Column(
+        children: [
+          TextField(
+            decoration: InputDecoration(labelText: "Поиск", icon: Icon(Icons.find_in_page)),
+            controller: controller,
+            onChanged: (value){
+              searchContacts(value);
+            },
+          ),
+          Expanded(
+            child: ListView.builder(
+                        itemCount: filteredContacts.length,
                         itemBuilder: (BuildContext context, int index) {
-                          Contact contact = snapshot.data![index];
-                          return ContactListTile(name: contact.displayName,
-                              phone: contact.phones[index],
-                              email: "");
+                          Contact contact = filteredContacts[index];
+                          return ContactListTile(
+                              name: contact.displayName.isEmpty ? "":contact.displayName,
+                              phone: contact.phones.isEmpty ? "":contact.phones[0].toString(),
+                              email: contact.emails.isEmpty ? "":contact.emails[0].toString());
                         }
-                    );
-                  }
-                }
-            }
-          },
-        ),
-      ),
+                        )
+          ),
+        ],
+      )
     );
   }
 
-  Future<List<Contact>> getContact() async{
+  void searchContacts(String query){
+    if(controller.text == ""){
+      setState(() {
+        filteredContacts = contacts;
+      });
+    }
+    else{
+      print(controller.text);
+      setState(() {
+        suggestions = filteredContacts.where((el) => el.displayName.toLowerCase().contains(controller.text.toLowerCase())).toList();
+        print(filteredContacts[0].displayName.toLowerCase());
+        filteredContacts = suggestions;
+      });
+    }
+  }
+
+  void getContact(){
     print("getContact");
-    return await FastContacts.allContacts;
+    FastContacts.allContacts.then((value) => {
+      contacts = value,
+      filteredContacts = contacts
+    });
+
   }
 }

@@ -18,17 +18,15 @@ import ru.pazderin.retrofitforecaster.classes.Wrapper
 
 class MainActivity : AppCompatActivity() {
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var retrofit = Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl("https://api.openweathermap.org/data/2.5/").build()
-        var retrofitServise:RetrofitServise = retrofit.create(RetrofitServise::class.java)
+        val retrofit = Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl("https://api.openweathermap.org/data/2.5/").build()
+        val retrofitServise:RetrofitServise = retrofit.create(RetrofitServise::class.java)
         val result:Call<Wrapper> = retrofitServise.getWeather()
         var myList:List<MyWeatherList>
-        var rView = findViewById<RecyclerView>(R.id.rView)
+        val rView = findViewById<RecyclerView>(R.id.rView)
         rView.layoutManager = LinearLayoutManager(this)
 
         result.enqueue(object : Callback<Wrapper> {
