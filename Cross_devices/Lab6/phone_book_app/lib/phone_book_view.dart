@@ -24,7 +24,9 @@ class _PhoneBookViewState extends State<PhoneBookView> {
   TextEditingController controller = TextEditingController();
   @override
   void initState() {
+    filteredContacts = List.empty();
     getContact();
+
     super.initState();
   }
 
