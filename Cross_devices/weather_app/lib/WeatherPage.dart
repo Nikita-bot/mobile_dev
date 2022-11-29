@@ -12,20 +12,20 @@ class WeatherPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
+      backgroundColor: Colors.blue,
+      body:Center(child:Column(
+        mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(city),
-            Image(image: NetworkImage( "http://openweathermap.org/img/wn/${Uri.parse(icon)}.png"),
+            Text(city, style: TextStyle(color: Colors.white, fontSize: 40)),
+            Image(image: NetworkImage( "http://openweathermap.org/img/wn/${Uri.parse(icon)}.png", scale: 1/4),
             width: 100,
             height: 100,),
-            Text(description),
-            Text(temp),
-            Text(pressure),
+            Text(description,style: TextStyle(color: Colors.white, fontSize: 30)),
+            Text("$temp °C",style: TextStyle(color: Colors.white, fontSize: 40,fontWeight: FontWeight.bold)),
+            Text("${(int.parse(pressure)*0.75).toString()} мм рт. ст.",style: TextStyle(color: Colors.white, fontSize: 30)),
 
           ],
-        ),
       ),
-    );
+    ));
   }
 }
